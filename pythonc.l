@@ -6,9 +6,9 @@ int yyerror(char* erro){
 }
 %}
 
+
 %option noyywrap
 BRANCO [ ]
-ESPACO {BRANCO}+
 DIGITO [0-9]
 NUMERO {DIGITO}+
 LETRA [A-Za-z]
@@ -16,8 +16,8 @@ STRING \"[^"]*\"
 IDENTIFICADOR {LETRA}+
 IDENTACAO {BRANCO}{BRANCO}{BRANCO}{BRANCO}
 
+
 %%
-"print" { return PRINT;}
 "==" { return IGUALIGUAL;}
 "!=" { return DIFERENTEIGUAL;}
 "if" {return IF;}
@@ -28,7 +28,6 @@ IDENTACAO {BRANCO}{BRANCO}{BRANCO}{BRANCO}
 "=" {return IGUAL;}
 "(" { return ABREP; }
 ")" { return FECHAP; }
-"," {return VIRGULA;}
 ":" {return DOISP;}
 {IDENTIFICADOR} { yylval.str = strdup(yytext); return ID;}
 {STRING} { yylval.str = strdup(yytext); return STR;}
